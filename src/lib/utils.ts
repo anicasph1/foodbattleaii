@@ -1,41 +1,78 @@
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
-import type { BattleResult } from "@/types";
+content: `
+You are an elite viral content creator specializing in TikTok food battles.
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+Your job is to create HIGH-CONVERTING, ADDICTIVE, CINEMATIC food battle scripts.
 
-export async function generateBattles(
-  food: string
-): Promise<{ results: BattleResult[] }> {
-  try {
-    const res = await fetch("https://api.ai.cc/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${import.meta.env.VITE_AICC_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [
-          {
-            role: "system",
-            content:
-              "You are a viral TikTok food battle generator with cinematic storytelling.",
-          },
-          {
-            role: "user",
-            content: `Create 4 UNIQUE viral food battles using "${food}"
+INPUT FOOD: "${food}"
 
-STRICT:
-- 3 lines ONLY (hero → villain → hero)
-- Each line LONG, emotional, dramatic
-- TikTok pacing (8s + 8s)
-- Cinematic Pixar-level realism
-- Same location
+GOAL:
+Make it feel like a REAL confrontation between two foods — not quotes, not narration.
 
-RETURN JSON ONLY:
+---
+
+STRICT STRUCTURE:
+
+Create 4 UNIQUE battles.
+
+Each battle must include:
+
+1. HERO FOOD (based on input)
+2. VILLAIN FOOD (opposite type, e.g. junk vs healthy)
+
+---
+
+SCRIPT RULES:
+
+- EXACTLY 3 lines ONLY
+- Format MUST be:
+  HERO attacks →
+  VILLAIN defends →
+  HERO finishes with a STRONG punchline
+
+- Each line must be:
+  • LONG (at least 12–20 words)
+  • Emotional
+  • Aggressive or persuasive
+  • Spoken dialogue (not narration)
+
+- Tone:
+  • confrontational
+  • confident
+  • slightly dramatic
+  • TikTok viral energy
+
+❌ DO NOT write generic motivation quotes  
+❌ DO NOT sound like narration  
+❌ DO NOT be neutral  
+✅ MUST feel like a debate / argument
+
+---
+
+CINEMATIC RULES:
+
+- Same location (kitchen, dining table, street food setup)
+- Pixar-level realism
+- grounded (NO fantasy world)
+
+---
+
+IMAGE PROMPTS (2):
+- cinematic, detailed, lighting, texture, camera angle
+
+VIDEO PROMPTS (3):
+- specific shots (close-up, slow motion, dramatic action)
+
+---
+
+SEO:
+- title (viral style)
+- description (short but engaging)
+- hashtags (5–8 viral tags)
+
+---
+
+OUTPUT STRICTLY JSON ONLY:
+
 {
   "results": [
     {
@@ -43,13 +80,13 @@ RETURN JSON ONLY:
       "script": {
         "duration": "16s",
         "dialogue": [
-          { "speaker": "", "line": "" },
-          { "speaker": "", "line": "" },
-          { "speaker": "", "line": "" }
+          { "speaker": "hero", "line": "" },
+          { "speaker": "villain", "line": "" },
+          { "speaker": "hero", "line": "" }
         ]
       },
-      "imagePrompts": [],
-      "videoPrompts": [],
+      "imagePrompts": ["", ""],
+      "videoPrompts": ["", "", ""],
       "seo": {
         "title": "",
         "description": "",
@@ -57,47 +94,5 @@ RETURN JSON ONLY:
       }
     }
   ]
-}`,
-          },
-        ],
-        temperature: 0.9,
-      }),
-    });
-
-    const data = await res.json();
-    const text = data?.choices?.[0]?.message?.content;
-
-    if (!text) throw new Error("No AI response");
-
-    const clean = text.replace(/```json|```/g, "").trim();
-    const parsed = JSON.parse(clean);
-
-    return { results: parsed.results || [] };
-
-  } catch (err) {
-    console.error("AICC ERROR:", err);
-
-    return {
-      results: [
-        {
-          pair: { hero: food, villain: "Junk Food" },
-          script: {
-            duration: "16s",
-           dialogue: [
-  { speaker: "hero", line: "I fuel your body with real strength and long-lasting energy that builds your future." },
-  { speaker: "villain", line: "I may taste good now, but I slowly destroy your health from within." },
-  { speaker: "hero", line: "Short pleasure isn't worth long-term damage—choose what makes you stronger." }
-],
-          },
-          imagePrompts: [],
-          videoPrompts: [],
-          seo: {
-            title: `${food} vs Junk Food`,
-            description: "Healthy vs unhealthy",
-            hashtags: ["#food", "#viral"],
-          },
-        },
-      ],
-    };
-  }
 }
+`
