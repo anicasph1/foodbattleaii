@@ -77,9 +77,28 @@ RETURN JSON ONLY:
     return { results: parsed.results };
 
   } catch (err) {
-    console.error("AICC ERROR:", err);
+  console.error("AICC ERROR:", err);
 
-    // fallback if API fails
-    return { results: generateFallbackResults(food) };
-  }
+  return {
+    results: [
+      {
+        pair: { hero: food, villain: "Junk Food" },
+        script: {
+          duration: "16s",
+          dialogue: [
+            { speaker: food, line: "I fuel your body with real strength and lasting energy that actually builds your future." },
+            { speaker: "Junk Food", line: "I might taste better for a moment, but I'm slowly destroying everything inside you." },
+            { speaker: food, line: "Short pleasure isn't worth long-term damage—I'm the choice that actually makes you stronger." }
+          ]
+        },
+        imagePrompts: [],
+        videoPrompts: [],
+        seo: {
+          title: `${food} vs Junk Food`,
+          description: "Healthy vs unhealthy battle",
+          hashtags: ["#food", "#viral"]
+        }
+      }
+    ]
+  };
 }
