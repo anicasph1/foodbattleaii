@@ -60,15 +60,24 @@ SCRIPT RULES:
 ❌ NO narration
 ✅ MUST feel like argument
 
-CINEMATIC:
-- Same location
-- Pixar realism
-- grounded
+IMAGE PROMPTS (2):
+- Pixar-style 3D animated scene
+- anthropomorphic food characters with expressive faces and limbs
+- intense emotional confrontation between hero and villain
+- dramatic cinematic lighting, volumetric light, depth of field
+- ultra detailed textures, high realism rendering
+- environment: grocery store aisle or kitchen setting
+- dynamic pose, tension, storytelling moment
 
-ALWAYS INCLUDE:
-- imagePrompts (2)
-- videoPrompts (3)
-- seo
+VIDEO PROMPTS (3):
+- Pixar-style 3D animation scene
+- hero food confronting villain food in same environment
+- shot types:
+  1. close-up emotional face reaction
+  2. slow motion dramatic action
+  3. final hero victory cinematic shot
+- realistic lighting, shadows, motion blur
+- high detail, cinematic storytelling
 
 RETURN JSON ONLY:
 
