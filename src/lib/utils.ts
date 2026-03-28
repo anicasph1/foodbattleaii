@@ -1,17 +1,19 @@
-import { type ClassValue, clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-import type { BattleResult } from '@/types';
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+import type { BattleResult } from "@/types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export async function generateBattles(food: string): Promise<{ results: BattleResult[] }> {
+export async function generateBattles(
+  food: string
+): Promise<{ results: BattleResult[] }> {
   try {
     const res = await fetch("https://api.ai.cc/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${import.meta.env.VITE_AICC_API_KEY}`,
+        Authorization: `Bearer ${import.meta.env.VITE_AICC_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -19,7 +21,8 @@ export async function generateBattles(food: string): Promise<{ results: BattleRe
         messages: [
           {
             role: "system",
-            content: "You are a viral TikTok food battle generator with cinematic storytelling."
+            content:
+              "You are a viral TikTok food battle generator with cinematic storytelling.",
           },
           {
             role: "user",
@@ -62,43 +65,74 @@ RETURN JSON ONLY:
     }
   ]
 }
-`
-          }
+`,
+          },
         ],
-        temperature: 0.9
-      })
+        temperature: 0.9,
+      }),
     });
 
     const data = await res.json();
-    const text = data.choices?.[0]?.message?.content;
 
-    const parsed = JSON.parse(text);
+    const text = data?.choices?.[0]?.message?.content;
 
-    return { results: parsed.results };
+    // 🔒 prevent crash
+    if (!text) {
+      throw new Error("No AI response");
+    }
 
+    // 🔒 clean possible bad formatting
+    const clean = text.replace(/```json|```/g, "").trim();
+
+    const parsed = JSON.parse(clean);
+
+    return {
+      results: parsed.results || [],
+    };
   } catch (err) {
-  console.error("AICC ERROR:", err);
+    console.error("AICC ERROR:", err);
 
-  return {
-    results: [
-      {
-        pair: { hero: food, villain: "Junk Food" },
-        script: {
-          duration: "16s",
-          dialogue: [
-            { speaker: food, line: "I fuel your body with real strength and lasting energy that actually builds your future." },
-            { speaker: "Junk Food", line: "I might taste better for a moment, but I'm slowly destroying everything inside you." },
-            { speaker: food, line: "Short pleasure isn't worth long-term damage—I'm the choice that actually makes you stronger." }
-          ]
+    // ✅ SAFE fallback (para di mag black screen)
+    return {
+      results: [
+        {
+          pair: { hero: food || "Healthy Food", villain: "Junk Food" },
+          script: {
+            duration: "16s",
+            dialogue: [
+              {
+                speaker: food || "Healthy Food",
+                line:
+                  "I fuel your body with real strength and long-lasting energy that actually builds your future and keeps you alive.",
+              },
+              {
+                speaker: "Junk Food",
+                line:
+                  "I might taste better for a moment, but I'm silently destroying your health from the inside every single day.",
+              },
+              {
+                speaker: food || "Healthy Food",
+                line:
+                  "Short pleasure isn't worth long-term damage—choose what truly makes you stronger and not what slowly kills you.",
+              },
+            ],
+          },
+          imagePrompts: [
+            "healthy food cinematic lighting",
+            "junk food greasy dramatic shot",
+          ],
+          videoPrompts: [
+            "close-up healthy food glowing",
+            "junk food falling apart slow motion",
+            "final hero shot clean food",
+          ],
+          seo: {
+            title: `${food} vs Junk Food`,
+            description: "Healthy vs unhealthy food battle",
+            hashtags: ["#food", "#viral", "#health"],
+          },
         },
-        imagePrompts: [],
-        videoPrompts: [],
-        seo: {
-          title: `${food} vs Junk Food`,
-          description: "Healthy vs unhealthy battle",
-          hashtags: ["#food", "#viral"]
-        }
-      }
-    ]
-  };
+      ],
+    };
+  }
 }
