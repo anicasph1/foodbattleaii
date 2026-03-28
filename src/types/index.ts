@@ -20,6 +20,8 @@ export interface SEO {
 }
 
 export interface BattleResult {
+  hook: string; // 🔥 ADD THIS LINE
+
   pair: FoodPair;
   script: Script;
   imagePrompts: string[];
