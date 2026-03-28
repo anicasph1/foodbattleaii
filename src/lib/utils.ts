@@ -89,10 +89,9 @@ RETURN JSON ONLY:
     return {
       results: parsed.results || [],
     };
-  } catch (err) {
+  }   } catch (err) {
     console.error("AICC ERROR:", err);
 
-    // ✅ SAFE fallback (para di mag black screen)
     return {
       results: [
         {
