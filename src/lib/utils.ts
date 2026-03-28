@@ -83,11 +83,11 @@ RETURN JSON ONLY:
           pair: { hero: food, villain: "Junk Food" },
           script: {
             duration: "16s",
-            dialogue: [
-              { speaker: food, line: "I fuel your body with real energy that builds your future." },
-              { speaker: "Junk Food", line: "I taste good now, but destroy you later." },
-              { speaker: food, line: "Choose strength over addiction." }
-            ],
+           dialogue: [
+  { speaker: "hero", line: "I fuel your body with real strength and long-lasting energy that builds your future." },
+  { speaker: "villain", line: "I may taste good now, but I slowly destroy your health from within." },
+  { speaker: "hero", line: "Short pleasure isn't worth long-term damage—choose what makes you stronger." }
+],
           },
           imagePrompts: [],
           videoPrompts: [],
