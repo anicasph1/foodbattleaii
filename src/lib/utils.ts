@@ -82,4 +82,4 @@ RETURN JSON ONLY:
     // fallback if API fails
     return { results: generateFallbackResults(food) };
   }
-}}
+}
