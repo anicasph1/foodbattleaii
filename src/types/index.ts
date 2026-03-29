@@ -1,39 +1,25 @@
-export interface FoodPair {
-  hero: string;
-  villain: string;
-}
-
-export interface DialogueLine {
-  speaker: 'hero' | 'villain' | 'narrator';
+export interface ScriptLine {
+  speaker: string;
   line: string;
 }
 
 export interface Script {
   duration: string;
-  dialogue: DialogueLine[];
-}
-
-export interface SEO {
-  title: string;
-  description: string;
-  hashtags: string[];
+  dialogue: ScriptLine[];
 }
 
 export interface BattleResult {
-  hook: string; // 🔥 ADD THIS LINE
-
-  pair: FoodPair;
+  hook: string; // ✅ nasa top-level (IMPORTANT)
+  pair: {
+    hero: string;
+    villain: string;
+  };
   script: Script;
   imagePrompts: string[];
   videoPrompts: string[];
-  seo: SEO;
-}
-
-export interface GenerateResponse {
-  results: BattleResult[];
-}
-
-export interface ApiError {
-  error: string;
-  fallback?: BattleResult[];
+  seo: {
+    title: string;
+    description: string;
+    hashtags: string[];
+  };
 }
