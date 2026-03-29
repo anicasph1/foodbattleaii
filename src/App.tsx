@@ -98,10 +98,10 @@ function App() {
       "min-h-screen transition-colors duration-500",
       darkMode ? "bg-slate-950" : "bg-slate-50"
     )}>
-   {/* Background Effects */}
+  {/* Background Effects */}
 <div className="fixed inset-0 overflow-hidden pointer-events-none">
 
-  {/* ✅ TOPO */}
+  {/* TOPO */}
   <TopoBg />
 
   {/* Gradient orbs */}
@@ -115,26 +115,18 @@ function App() {
     darkMode ? "bg-pink-600" : "bg-pink-400"
   )} />
 
-</div>
-
   <div className={cn(
-    "absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full blur-[100px] opacity-20 transition-colors duration-500",
-    darkMode ? "bg-pink-600" : "bg-pink-400"
+    "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[150px] opacity-10",
+    darkMode ? "bg-cyan-600" : "bg-cyan-400"
   )} />
 
+  {/* Grid */}
+  <div className="absolute inset-0 grid-pattern opacity-50" />
+
+  {/* Noise */}
+  <div className="absolute inset-0 noise-overlay" />
+
 </div>
-        )} />
-        <div className={cn(
-          "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[150px] opacity-10 transition-colors duration-500",
-          darkMode ? "bg-cyan-600" : "bg-cyan-400"
-        )} />
-        
-        {/* Grid pattern */}
-        <div className="absolute inset-0 grid-pattern opacity-50" />
-        
-        {/* Noise overlay */}
-        <div className="absolute inset-0 noise-overlay" />
-      </div>
 
       {/* Header */}
       <header className="relative z-10 px-6 py-4">
