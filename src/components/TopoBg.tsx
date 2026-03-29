@@ -3,26 +3,11 @@ export default function TopoBg() {
     <div className="fixed inset-0 -z-10 pointer-events-none">
       <svg
         viewBox="0 0 800 800"
-        preserveAspectRatio="none"
-        className="w-[200%] h-[200%] opacity-[0.04] animate-[topoMove_40s_linear_infinite]"
+        className="w-[200%] h-[200%] opacity-[0.08]"
       >
-        <defs>
-          <pattern
-            id="topo"
-            width="40"
-            height="40"
-            patternUnits="userSpaceOnUse"
-          >
-            <path
-              d="M0 20 Q10 0 20 20 T40 20"
-              fill="none"
-              stroke="white"
-              strokeWidth="0.5"
-            />
-          </pattern>
-        </defs>
-
-        <rect width="100%" height="100%" fill="url(#topo)" />
+        <path d="M0 200 Q200 100 400 200 T800 200" stroke="white" fill="none"/>
+        <path d="M0 300 Q200 200 400 300 T800 300" stroke="white" fill="none"/>
+        <path d="M0 400 Q200 300 400 400 T800 400" stroke="white" fill="none"/>
       </svg>
     </div>
   );
