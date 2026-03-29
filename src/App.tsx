@@ -99,15 +99,21 @@ function App() {
       darkMode ? "bg-slate-950" : "bg-slate-50"
     )}>
       {/* Background Effects */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {/* Gradient orbs */}
-        <div className={cn(
-          "absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full blur-[120px] opacity-30 transition-colors duration-500",
-          darkMode ? "bg-purple-600" : "bg-purple-400"
-        )} />
-        <div className={cn(
-          "absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full blur-[100px] opacity-20 transition-colors duration-500",
-          darkMode ? "bg-pink-600" : "bg-pink-400"
+     <div className="fixed inset-0 overflow-hidden pointer-events-none">
+  {/* ✅ TOPO BACKGROUND */}
+  <TopoBg />
+  {/* Gradient orbs */}
+  <div className={cn(
+    "absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full blur-[120px] opacity-30 transition-colors duration-500",
+    darkMode ? "bg-purple-600" : "bg-purple-400"
+  )} />
+
+  <div className={cn(
+    "absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full blur-[100px] opacity-20 transition-colors duration-500",
+    darkMode ? "bg-pink-600" : "bg-pink-400"
+  )} />
+
+</div>
         )} />
         <div className={cn(
           "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[150px] opacity-10 transition-colors duration-500",
