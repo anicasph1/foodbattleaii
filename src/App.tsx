@@ -86,6 +86,7 @@ function App() {
           </div>
         </form>
 
+        {/* ERROR */}
         {error && (
           <p className="text-red-400 mb-6 text-sm">{error}</p>
         )}
@@ -110,10 +111,10 @@ function App() {
                   {item.pair.hero} vs {item.pair.villain}
                 </h3>
 
-                {/* 🔥 HOOK (NEW) */}
-                {item.script.hook && (
+                {/* 🔥 HOOK (FIXED) */}
+                {item.hook && (
                   <p className="text-red-500 font-semibold mb-4">
-                    {item.script.hook}
+                    {item.hook}
                   </p>
                 )}
 
@@ -138,19 +139,21 @@ function App() {
                 </div>
 
                 {/* IMAGE PROMPTS */}
-                <p className="text-xs text-white/40 mb-1">Image Prompts</p>
+                <p className="text-xs text-white/40 mb-1">
+                  Image Prompts
+                </p>
                 <ul className="text-xs text-white/70 mb-4 list-disc ml-4">
                   {item.imagePrompts.map((p, idx) => (
                     <li key={idx}>{p}</li>
                   ))}
                 </ul>
 
-                {/* COPY */}
+                {/* COPY (FIXED) */}
                 <button
                   onClick={() =>
                     navigator.clipboard.writeText(
                       [
-                        item.script.hook,
+                        item.hook,
                         ...item.script.dialogue.map((l) => l.line)
                       ].join("\n")
                     )
