@@ -27,7 +27,7 @@ export async function generateBattles(
           },
           {
             role: "user",
-            content: `
+          content: `
 You are an elite viral TikTok food battle creator.
 
 Your job is to generate HIGHLY VIRAL, CINEMATIC, DARK, ADDICTIVE food battle content with strong emotional and psychological impact.
@@ -41,7 +41,7 @@ GOAL:
 Create intense "hero vs villain" food battles that feel like:
 - a real argument
 - psychological confrontation
-- slightly uncomfortable truth
+- uncomfortable truth
 
 ---
 
@@ -65,46 +65,34 @@ Hook must:
 - slightly unsettling or emotional
 - trigger curiosity, tension, or realization
 
-Examples:
-- "You think this is harmless… but it isn’t."
-- "You’re not choosing this anymore—it’s choosing you."
-- "One of these is slowly destroying you."
-
 ---
 
 SCRIPT RULES:
 
 - EXACTLY 3 lines ONLY
-- FORMAT:
-  1. HERO attacks
-  2. VILLAIN defends
-  3. HERO finishes with a DARK punchline
+1. HERO attacks
+2. VILLAIN defends
+3. HERO finishes with domination
 
-Each line must:
-- be LONG (20–35 words)
-- feel like natural spoken dialogue
-- have pacing (not rushed)
-- take ~4–6 seconds to say
+Each line:
+- 20–35 words
+- natural spoken rhythm
+- emotionally intense
+- not poetic, not robotic
 
----
-
-TIMING RULE:
-
-- TOTAL script must feel like ~16 seconds when spoken
-- each line must have rhythm and breathing space
-- avoid short or rushed sentences
+TOTAL pacing: ~16 seconds
 
 ---
 
-DARK MODE:
+TONE:
 
 Hero:
-- calm, confident, slightly cold
-- exposes uncomfortable truth
+- calm, dominant, controlled
+- speaks truth, no emotion wasted
 
 Villain:
-- tempting, persuasive
-- slightly defensive
+- defensive, seductive, manipulative
+- tries to justify itself
 
 ---
 
@@ -112,54 +100,97 @@ PSYCHOLOGY:
 
 Focus on:
 - addiction vs control
-- short-term pleasure vs long-term consequence
-- comfort vs discipline
+- instant pleasure vs long-term damage
+- discipline vs comfort
 
-Make it feel personal.
+Make it feel PERSONAL.
 
 ---
 
-KNOCKOUT LINE:
+ENDING:
 
 Final hero line must feel like:
 - a realization
-- a heavy truth
+- a quiet but powerful destruction
 - something people replay
 
 ---
 
-VISUAL STYLE:
+🎬 VISUAL STYLE (VERY IMPORTANT):
+
+STYLE DIRECTION:
+- clean, minimal, premium aesthetic
+- black, white, gray color palette
+- subtle topography-like texture or background
+- feels like Apple / ChatGPT UI design
+- NOT colorful fantasy
+
+CHARACTERS:
+- Pixar-style 3D anthropomorphic food
+- expressive face, limbs, emotion
+- realistic material textures
+
+ENVIRONMENT:
+- real-world only (kitchen, grocery, mall, table)
+- modern, minimal, clean environment
+- neutral tones (white, gray, black)
+
+LIGHTING:
+- cinematic but soft
+- high contrast shadows
+- volumetric light but subtle
+- no oversaturated colors
+
+MOOD:
+- quiet tension
+- premium cinematic frame
+- feels like a serious film, not cartoon
+
+---
 
 IMAGE PROMPTS (2):
-- Pixar-style 3D animated
-- anthropomorphic food (face, arms, emotion)
-- intense confrontation
+
+Each must:
+- Pixar-style 3D render
+- anthropomorphic characters
+- confrontation moment
+- clean modern environment
+- black / white / gray aesthetic
 - cinematic lighting
-- volumetric light, depth of field
-- ultra detailed textures
-- realistic environment (kitchen, grocery store, table)
+- depth of field
+- ultra detailed
+- looks like a movie frame
+
+---
 
 VIDEO PROMPTS (3):
-- Pixar-style 3D animation
-- same characters and location
-- shots:
-  1. close-up emotional face
-  2. slow motion dramatic action
-  3. final hero victory shot
-- cinematic lighting, motion blur
+
+Same characters + same location
+
+Shots:
+1. close-up emotional face
+2. slow motion tension movement
+3. final hero dominance frame
+
+Style:
+- Pixar 3D
+- cinematic lighting
+- minimal color palette (black/white/gray)
+- soft camera movement
+- motion blur
 
 ---
 
 SEO:
 
 TITLE:
-- viral clickbait
-- include hero vs villain
-- use power words (DESTROYS, TRUTH, SHOCKING)
+- viral, aggressive
+- include "vs"
+- use power words (DESTROYS, TRUTH, EXPOSED)
 
 DESCRIPTION:
-- 1–2 sentences
-- emotional and curiosity-driven
+- 1–2 lines
+- curiosity driven
 
 HASHTAGS:
 - 5–8 tags
